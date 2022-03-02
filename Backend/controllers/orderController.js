@@ -16,3 +16,16 @@ exports.createOrder = catchAsyncError(async (req, res, next) => {
         order
     })
 })
+
+exports.getSingleOrder = catchAsyncError(async (req, res, next) => {
+
+    const order = await Order.findById(req.params.id).populate("user", "name email");
+
+    if (!order) {
+        return next(new ErrorHandler(404, "Order not found"));
+    }
+    res.status(200).json({
+        success: true,
+        order
+    })
+})
