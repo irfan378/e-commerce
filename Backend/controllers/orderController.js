@@ -1,7 +1,8 @@
 const Order = require('../models/orderModel');
-const Product = require('../models/productModel');
+const Product = require("../models/productModel");
 const ErrorHandler = require('../Utils/ErrorHandler');
 const catchAsyncError = require('../middleware/catchAsyncError');
+
 
 // Create new Order
 exports.createOrder = catchAsyncError(async (req, res, next) => {
@@ -76,6 +77,8 @@ exports.updateOrder = catchAsyncError(async (req, res, next) => {
     if (req.body.status === "Delivered") {
         order.deliveredAt = Date.now();
     }
+
+    await order.save({ validateBeforeSave: false });
     res.status(200).json({
         success: true,
     })
@@ -104,7 +107,6 @@ exports.deleteOrder = catchAsyncError(async (req, res, next) => {
     await order.remove();
     res.status(200).json({
         success: true,
-        totalAmount,
-        orders
+
     })
 })
