@@ -2,6 +2,7 @@ const Order = require('../models/orderModel');
 const Product = require("../models/productModel");
 const ErrorHandler = require('../Utils/ErrorHandler');
 const catchAsyncError = require('../middleware/catchAsyncError');
+const mongoose = require("mongoose")
 
 
 // Create new Order
@@ -62,11 +63,14 @@ exports.getAllOrders = catchAsyncError(async (req, res, next) => {
 
 // update order status --Admin
 exports.updateOrder = catchAsyncError(async (req, res, next) => {
-
     const order = await Order.findById(req.params.id);
 
+    if (!order) {
+        return next(new ErrorHandler(404, "Order not found with this id"));
+    }
+
     if (order.orderStatus === "Delivered") {
-        return next(new ErrorHandler(400, "Order already delivered"));
+        return next(new ErrorHandler("Order already delivered", 400));
     }
 
     order.orderItems.forEach(async (o) => {
@@ -82,9 +86,9 @@ exports.updateOrder = catchAsyncError(async (req, res, next) => {
     res.status(200).json({
         success: true,
     })
+
+
 })
-
-
 
 async function updateStock(id, quantity) {
     const product = await Product.findById(id);
