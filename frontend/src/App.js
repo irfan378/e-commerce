@@ -1,9 +1,9 @@
 
 import React from 'react'
-import Header from "./components/layout/Header.js";
+import Header from "./components/layout/Header/Header.js";
 import { BrowserRouter as Router } from 'react-router-dom';
 import WebFont from 'webfontloader';
-
+import Footer from "./components/layout/Footer/Footer.js";
 
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
   return (
     <Router>
       <Header />
+      <Footer />
     </Router>
   );
 }
