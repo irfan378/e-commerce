@@ -1,11 +1,11 @@
 import React from 'react'
 import { ReactNavbar } from "overlay-navbar";
-import logo from "../../Images/pngwing.com.png";
+import logo from "../../../Images/pngwing.com.png"
 
 const Header = () => {
     return (<ReactNavbar
         burgerColor="#eb4034"
-        burgerColorHover="#a62d24"
+        burgerColorHover="#a62d2d"
         logo={logo}
         logoWidth="20vmax"
         navColor1="#00FFFF"
