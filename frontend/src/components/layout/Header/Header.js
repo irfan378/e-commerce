@@ -8,7 +8,7 @@ const Header = () => {
         burgerColorHover="#a62d2d"
         logo={logo}
         logoWidth="20vmax"
-        navColor1="#00FFFF"
+        navColor1="#1ef659"
         logoHoverSize="10px"
         logoHoverColor="#eb4034"
         link1Text="Home"
