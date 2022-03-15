@@ -1,1 +1,51 @@
+footer {
+  margin-top: 10vmax;
+  padding: 2vmax;
+  background-color: rgba(34, 33, 33);
+  color: white;
+  display: flex;
+  align-items: center;
+}
 
+.midfooter {
+  width: 60%;
+  text-align: center;
+}
+.midfooter > h2 {
+  font-size: 3vmax;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: brown;
+}
+
+.midfooter > p {
+  max-width: 60%;
+  margin: 1vmax auto;
+}
+
+.rightfooter {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rightfooter > h4 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1.4vmax;
+  text-decoration: underline;
+}
+
+.rightfooter > a {
+  text-decoration: none;
+  font-size: 1.3vmax;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: rgb(155, 69, 69);
+  margin: 0.6vmax;
+  transition: all 0.5s;
+}
+.rightfooter > a:hover {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0.8vmax;
+  font-size: 1vmax;
+}

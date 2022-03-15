@@ -17,7 +17,6 @@ function App() {
   return (
 
     <Router>
-      <h1 className='bg-black text-white'>this is tailwind</h1>
       <Header />
       <Footer />
     </Router>

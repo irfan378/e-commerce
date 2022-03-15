@@ -1,15 +1,16 @@
 import React from 'react'
+import "./Footer.css"
 
 const Footer = () => {
     return (
-        <footer className='my-10 p-2 bg-black text-white'>
-            <div className="bg-black">
-                <h4>Ecommerce</h4>
+        <footer id='footer'>
+            <div className="midfooter">
+                <h2>Ecommerce</h2>
                 <p>High quality and fast delivery is our priority</p>
                 <p>Copyrights 2022 &copy; Irfan Farooq</p>
             </div>
 
-            <div className="bg-black">
+            <div className="rightfooter">
                 <h4>Follow us</h4>
                 <a href="http://instagram.com">Instagram</a>
                 <a href="http://facebook.com">Facebook</a>
