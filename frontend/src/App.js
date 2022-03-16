@@ -1,10 +1,10 @@
 
 import React from 'react'
 import Header from "./components/layout/Header/Header.js";
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import WebFont from 'webfontloader';
 import Footer from "./components/layout/Footer/Footer.js";
-
+import Home from "./components/Home/Home.js";
 
 function App() {
   React.useEffect(() => {
@@ -18,6 +18,10 @@ function App() {
 
     <Router>
       <Header />
+      <Routes>
+
+        <Route exact path="/" element={<Home />} />
+      </Routes>
       <Footer />
     </Router>
   );
