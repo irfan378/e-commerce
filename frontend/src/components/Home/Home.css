@@ -1,0 +1,55 @@
+.banner {
+  background-image: linear-gradient(to right, #9b8e66, #b65034);
+  height: 100vmin;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.banner > h1 {
+  margin: 5vmax;
+  font: 600 2.5vmax "Roboto";
+}
+.banner > p {
+  font: 300 1.4vmax "Lucida Sans";
+}
+.banner > a > button {
+  background-color: rgb(54, 146, 118);
+  margin-bottom: 5vmax;
+  border: 4px solid rgb(61, 44, 44);
+  cursor: pointer;
+  border-radius: 3vmax;
+  padding: 1vmax;
+  transition: all 0.5s;
+  width: 9vmax;
+  font: 500 1vmax "Roboto";
+}
+.banner > a > button:hover {
+  background-color: rgba(54, 146, 118, 0.5);
+  color: red;
+  width: 8vmax;
+}
+.banner::after {
+  content: "";
+  width: 100vw;
+  height: 100vmin;
+  background-color: white;
+  position: absolute;
+  top: 0%;
+  left: 0;
+  clip-path: polygon(100% 68%, 0 100%, 100% 100%);
+  max-width: 100%;
+}
+.homeHeading {
+  text-align: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.4vmax;
+  border-bottom: 2px solid black;
+  width: 20vmax;
+  padding: 1vmax;
+  margin: 5vmax auto;
+  color: black;
+}
