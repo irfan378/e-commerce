@@ -53,7 +53,14 @@
   margin: 5vmax auto;
   color: black;
 }
-
+.container {
+  display: flex;
+  margin: 2vmax auto;
+  width: 80vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}
 .productCard {
   width: 14vmax;
   display: flex;
@@ -91,6 +98,24 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 1vmax;
 }
-
 .productCard:hover {
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+  transform: translateY(-1vmax);
+}
+
+@media screen and (max-width: 600px) {
+}
+.productCard > p {
+  font-size: 1.7vmax;
+}
+.productCard > div {
+  margin: 0vmax;
+  display: block;
+}
+.productCard > span {
+  font-size: 1.5vmax;
+}
+.productCard > div > span {
+  margin: 0 0.5vmax;
+  font: 300 1vmax "Roboto";
 }
