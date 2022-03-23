@@ -23,7 +23,7 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/product/:id" element={<ProductDetails></ProductDetails>} />
+        <Route exaxt path="/product/:id" element={<ProductDetails />} />
       </Routes>
       <Footer />
     </Router>
