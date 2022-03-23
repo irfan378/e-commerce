@@ -29,7 +29,7 @@ export const productReducer = (state = { products: [] }, action) => {
             return state;
     }
 
-}
+};
 
 export const productDetailsReducer = (state = { product: {} }, action) => {
 
@@ -38,13 +38,13 @@ export const productDetailsReducer = (state = { product: {} }, action) => {
             return {
                 loading: true,
                 ...state
-            }
+            };
         case PRODUCT_DETAILS_SUCCESS:
             return {
                 loading: false,
-                products: action.payload
+                product: action.payload,
 
-            }
+            };
         case PRODUCT_DETAILS_FAIL:
             return {
                 loading: false,

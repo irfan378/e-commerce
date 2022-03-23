@@ -1,0 +1,1 @@
+import ReactStars from "react-rating-stars-component"
