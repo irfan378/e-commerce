@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Header from "./components/layout/Header/Header.js";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
 import WebFont from 'webfontloader';
 import Footer from "./components/layout/Footer/Footer.js";
 import Home from "./components/Home/Home.js";
@@ -17,13 +17,12 @@ function App() {
     });
   }, [])
 
-
   return (
     <Router>
       <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exaxt path="/product/:id" element={<ProductDetails />} />
+        <Route exact path="/product/:id" element={<ProductDetails />} />
       </Routes>
       <Footer />
     </Router>
