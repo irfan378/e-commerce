@@ -14,9 +14,9 @@
   align-items: center;
   padding: 2vmax;
   box-sizing: border-box;
-  border: 2px solid white;
+  border: 1px solid white;
 }
-.ProductDetails > div {
+.ProductDetails > div:last-child {
   align-items: flex-start;
 }
 .CarouselImage {
@@ -42,4 +42,84 @@
 .detailsBlock-2 > span {
   color: black;
   font: 200 0.6vmax cursive;
+}
+.detailsBlock-3 {
+  width: 70%;
+}
+.detailsBlock-3 > h1 {
+  color: black;
+  font: 400 1.8vmax "Franklin Gothic Medium";
+  margin: 1vmax 0;
+}
+.detailsBlock-3-1 {
+  display: flex;
+  align-items: center;
+}
+.detailsBlock-3-1-1 > button {
+  border: none;
+  background-color: black;
+  padding: 0.5vmax;
+  cursor: pointer;
+  color: white;
+  transition: all 0.5s;
+}
+.detailsBlock-3-1-1 > button:hover {
+  background-color: black;
+}
+.detailsBlock-3-1-1 > input {
+  border: none;
+  background-color: black;
+  padding: 0.5vmax;
+  cursor: pointer;
+  color: white;
+  transition: all 0.5s;
+}
+.detailsBlock-3-1 > button:last-child {
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: all 0.5s;
+  background-color: rgb(194, 54, 30);
+  font: 500 0.7vmax "Roboto";
+  border-radius: 20px;
+  padding: 0.5vmax 2vmax;
+  margin: 1vmax;
+}
+.detailsBlock-3-1 > button:last-child:hover {
+  background-color: rgb(80, 22, 12);
+}
+.detailsBlock-3 > p {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 1vmax 0;
+  color: black;
+  font: 400 1vmax "Roboto";
+  margin: 1vmax 0;
+}
+.detailsBlock-4 {
+  color: black;
+  font: 500 1.2vmax "sans-serif";
+}
+.detailsBlock-4 > p {
+  color: black;
+  font: 300 0.8vmax "sans-serif";
+}
+.submitReview {
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: all 0.5s;
+  background-color: rgb(194, 54, 30);
+  font: 500 0.7vmax "Roboto";
+  border-radius: 20px;
+  padding: 0.5vmax 2vmax;
+  margin: 1vmax;
+  transition: all 0.5s;
+  outline: none;
+}
+.submitReview:hover {
+  background-color: rgb(80, 22, 12);
+  transition: scale(1.1);
+}
+@media screen and (max-width: 600px) {
 }
