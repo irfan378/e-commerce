@@ -122,4 +122,67 @@
   transition: scale(1.1);
 }
 @media screen and (max-width: 600px) {
+  .ProductDetails {
+    flex-direction: column;
+    height: unset;
+  }
+  .ProductDetails > div:last-child {
+    align-items: center;
+  }
+  .detailsBlock-1 > h2 {
+    font-size: 2.8 vmax;
+    text-align: center;
+  }
+  .detailsBlock-1 > p {
+    text-align: center;
+    font-size: 1vmax;
+  }
+  .detailsBlock-2 {
+    justify-content: center;
+  }
+  .detailsBlock-2 > span {
+    font-size: 1.5vmax;
+  }
+  .detailsBlock-3 > h1 {
+    font: 700 3vmax "Franklin Gothic Medium";
+    text-align: center;
+  }
+  .detailsBlock-3-1 {
+    flex-direction: column;
+  }
+  .detailsBlock-3-1-1 {
+    padding: 2vmax 0;
+  }
+  .detailsBlock-3-1-1 > button {
+    padding: 1.2vmax;
+    width: 4vmax;
+  }
+  .detailsBlock-3-1-1 > input {
+    padding: 1.5vmax;
+    width: 3vmax;
+    font: 400 1.8vmax "Roboto";
+  }
+  .detailsBlock-3-1 > button:last-child {
+    font: 500 1.7vmax "Roboto";
+    padding: 1.5vmax;
+    width: 20vmax;
+    margin: 3vmax 0;
+  }
+  .detailsBlock-3 > p {
+    padding: 2.5vmax 0;
+    text-align: center;
+    font: 400 2vmax "Roboto";
+  }
+  .detailsBlock-4 {
+    font: 500 2.5vmax "sans-serif";
+  }
+  .detailsBlock-4 > p {
+    font: 300 1.8vmax "sans-serif";
+  }
+  .submitReview {
+    font: 500 1.5vmax "Roboto";
+    padding: 1.5vmax;
+    width: 20vmax;
+    margin: 3vmax 0;
+  }
 }
