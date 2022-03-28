@@ -1,5 +1,5 @@
 .ProductDetails {
-  background-color: rgba(214, 214, 214);
+  background-color: rgb(251, 239, 239);
   width: 100vw;
   max-width: 100%;
   padding: 6vmax;
@@ -120,6 +120,46 @@
 .submitReview:hover {
   background-color: rgb(80, 22, 12);
   transition: scale(1.1);
+}
+.reviews {
+  display: flex;
+  overflow: auto;
+}
+.reviewHeading {
+  color: black;
+  font: 500 1.4vmax "Roboto";
+  text-align: center;
+  border-bottom: 1px solid black;
+  padding: 1vmax;
+  width: 20vmax;
+  margin: auto;
+  margin-bottom: 4vmax;
+}
+.reviewCard {
+  flex: none;
+  box-shadow: 0 0 5px black;
+  border: 1px solid black;
+  width: 30vmax;
+  display: flex;
+  align-items: center;
+  margin: 1vmax;
+  padding: 3vmax;
+}
+.reviewCard > img {
+  width: 5vmax;
+}
+.reviewCard > p {
+  color: black;
+  font: 600 0.9vmax "Roboto";
+}
+.reviewCard > span {
+  color: black;
+  font: 300 0.8vmax cursive;
+}
+.noReviews {
+  font: 400 1.3vmax "Gill sans";
+  text-align: center;
+  color: black;
 }
 @media screen and (max-width: 600px) {
   .ProductDetails {

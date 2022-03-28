@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component"
 
 
 
-const Product = ({ product }) => {
+const ProductCard = ({ product }) => {
     const options = {
         edit: false,
         color: "rgba(20,20,20,0.1)",
@@ -26,4 +26,4 @@ const Product = ({ product }) => {
     )
 }
 
-export default Product
+export default ProductCard
