@@ -1,10 +1,11 @@
 import { ALL_PRODUCT_FAIL, ALL_PRODUCT_REQUEST, ALL_PRODUCT_SUCCESS, CLEAR_ERRORS, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_FAIL } from "../constants/productConstants";
 import axios from "axios";
 
-export const getProducts = () => async (dispatch) => {
+export const getProducts = (keyword = "", currentPage = 1) => async (dispatch) => {
     try {
         dispatch({ type: ALL_PRODUCT_REQUEST });
-        const { data } = await axios.get("/api/v1/products");
+        let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}`;
+        const { data } = await axios.get(link);
         console.log(data);
         dispatch({
             type: ALL_PRODUCT_SUCCESS,
