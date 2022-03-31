@@ -13,7 +13,7 @@ const Products = () => {
     const params = useParams();
     const [currentPage, setCurrentPage] = useState(1);
     const [price, setPrice] = useState([0, 25000]);
-    const { products, loading, error, productsCount, resultPerPage } = useSelector((state) => state.products);
+    const { products, loading, error, productsCount, resultPerPage, filteredProductsCount } = useSelector((state) => state.products);
 
     const keyword = params.keyword;
     const setCurrentPageNo = (e) => {
@@ -23,9 +23,9 @@ const Products = () => {
         setPrice(newPrice);
     }
     useEffect(() => {
-        dispatch(getProducts(keyword, currentPage));
-    }, [dispatch, keyword, currentPage])
-
+        dispatch(getProducts(keyword, currentPage, price));
+    }, [dispatch, keyword, currentPage, price])
+    let count = filteredProductsCount;
     return <Fragment>
         {loading ? <Loader></Loader> : <Fragment>
             <h2 className="productHeading">Products</h2>
@@ -45,7 +45,7 @@ const Products = () => {
                     max={25000}
                 />
             </div>
-            {resultPerPage < productsCount && <div className="paginationBox">
+            {resultPerPage < count && <div className="paginationBox">
                 <Pagination
                     activePage={currentPage}
                     itemsCountPerPage={resultPerPage}
