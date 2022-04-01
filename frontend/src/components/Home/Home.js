@@ -20,7 +20,7 @@ const Home = () => {
         dispatch(getProducts());
     }, [dispatch, error, alert]);
 
-    const { loading, error, products, productsCount } = useSelector(
+    const { loading, error, products } = useSelector(
         (state) => state.products
     )
     return (
