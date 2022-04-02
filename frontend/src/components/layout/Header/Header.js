@@ -30,6 +30,7 @@ const Header = () => {
         link4ColorHover="#eb4034"
         link1Margin="1vmax"
         profileIconColor="rgba(35,35,35,0.8)"
+        profileIconUrl="/login"
         searchIconColor="rgba(35,35,35,0.8)"
         cartIconColor="rgba(35,35,35,0.8)"
         profileIconColorHover="#eb4034"
