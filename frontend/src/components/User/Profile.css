@@ -79,3 +79,32 @@
 .profileContainer > div:last-child > div:last-child > a:hover {
   background-color: black;
 }
+@media screen and (max-width: 600px) {
+  .profileContainer {
+    flex-direction: column;
+  }
+  .profileContainer > div:first-child > h1 {
+    font: 500 3.2vmax "Roboto";
+    transform: translateY(-2vmax);
+  }
+  .profileContainer > div:first-child > a {
+    font: 400 1.7vmax "Roboto";
+    padding: 1vmax;
+  }
+  .profileContainer > div:last-child {
+    text-align: center;
+    align-items: center;
+  }
+  .profileContainer > div:last-child > div > h4 {
+    font: 400 2.5vmax "Roboto";
+  }
+  .profileContainer > div:last-child > div > p {
+    font: 400 2vmax cursive;
+    margin: 0.5vmax 0;
+  }
+  .profileContainer > div:last-child > div:last-child > a {
+    font: 400 1.8vmax "Roboto";
+    padding: 1vmax;
+    margin: 2vmax 0;
+  }
+}
