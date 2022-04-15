@@ -94,6 +94,7 @@
 #registerImage > img {
   width: 3vmax;
   border-radius: 100%;
+  margin: 1vmax;
 }
 #registerImage > input {
   display: flex;
