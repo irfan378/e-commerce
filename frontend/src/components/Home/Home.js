@@ -11,6 +11,9 @@ import { clearErrors } from '../../actions/productAction'
 const Home = () => {
     const alert = useAlert();
     const dispatch = useDispatch();
+    const { loading, error, products } = useSelector(
+        (state) => state.products
+    )
 
     useEffect(() => {
         if (error) {
@@ -20,9 +23,7 @@ const Home = () => {
         dispatch(getProducts());
     }, [dispatch, error, alert]);
 
-    const { loading, error, products } = useSelector(
-        (state) => state.products
-    )
+
     return (
         <Fragment>
             {loading ? (<Loader></Loader>) : (

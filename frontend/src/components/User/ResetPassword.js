@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import "./UpdatePassword.css"
+import "./ResetPassword.css"
 import Loader from "../layout/Loader/Loader"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
@@ -9,23 +9,22 @@ import { UPDATE_PASSWORD_RESET } from '../../constants/userConstant'
 import MetaData from '../layout/MetaData'
 import LockOpen from '@material-ui/icons/LockOpen'
 import LockIcon from '@material-ui/icons/Lock'
-import VpnKeyIcon from '@material-ui/icons/VpnKey'
 
-const UpdatePassword = () => {
+
+const ResetPassword = () => {
     const dispatch = useDispatch();
     const alert = useAlert();
     const navigate = useNavigate();
     const { error, isUpdated, loading } = useSelector((state) => state.profile)
-    const [oldPassword, setOldPassword] = useState("")
-    const [newPassword, setNewPassword] = useState("")
+    const [Password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
     const updatePasswordSubmit = (e) => {
         e.preventDefault();
         const myForm = new FormData();
 
-        myForm.set("oldPassword", oldPassword)
-        myForm.set("newPassword", newPassword)
+
+        myForm.set("newPassword", Password)
         myForm.set("confirmPassword", confirmPassword)
         dispatch(updatePassword(myForm))
     }
@@ -55,12 +54,9 @@ const UpdatePassword = () => {
                         <h2 className='updatePasswordHeading'>Change Password</h2>
                         <form className='updatePasswordForm' onSubmit={updatePasswordSubmit}>
                             <div className="signUpPassword">
-                                <VpnKeyIcon />
-                                <input type="password" placeholder='Old Password' required name='password' value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} />
-                            </div>
-                            <div className="signUpPassword">
+
                                 <LockOpen />
-                                <input type="password" placeholder='New Password' required name='password' value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
+                                <input type="password" placeholder='New Password' required name='password' value={Password} onChange={(e) => setPassword(e.target.value)} />
                             </div>
                             <div className="signUpPassword">
                                 <LockIcon />
@@ -76,4 +72,4 @@ const UpdatePassword = () => {
     )
 }
 
-export default UpdatePassword
+export default ResetPassword

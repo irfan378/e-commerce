@@ -19,7 +19,7 @@ const UpdateProfile = () => {
 
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
-    const [avatar, setAvatar] = useState();
+    const [avatar, setAvatar] = useState("");
     const [avatarPreview, setAvatarPreview] = useState("/profile.jpg")
     const updateProfileSubmit = (e) => {
         e.preventDefault();
@@ -36,7 +36,7 @@ const UpdateProfile = () => {
         const reader = new FileReader();
 
         reader.onload = () => {
-            if (reader.readyState == 2) {
+            if (reader.readyState === 2) {
                 setAvatarPreview(reader.result);
                 setAvatar(reader.result);
             }

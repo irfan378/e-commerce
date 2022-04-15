@@ -163,7 +163,6 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
     const newUserData = {
         name: req.body.name,
         email: req.body.email,
-
     }
     if (req.body.avatar !== "") {
         const user = await User.findById(req.user.id);

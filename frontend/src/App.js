@@ -17,6 +17,8 @@ import Profile from "./components/User/Profile.js"
 import ProtectedRoute from './components/Route/ProtectedRoute.js';
 import UpdateProfile from "./components/User/UpdateProfile.js"
 import UpdatePassword from "./components/User/UpdatePassword.js"
+import ForgotPassword from "./components/User/ForgotPassword.js"
+import ResetPassword from "./components/User/ResetPassword.js"
 function App() {
   const { isAuthenticated, user } = useSelector(state => state.user)
   React.useEffect(() => {
@@ -49,6 +51,9 @@ function App() {
         <Route exact path="/password/update" element={<ProtectedRoute />} >
           <Route exact path="/password/update" element={<UpdatePassword />} />
         </Route >
+        <Route exact path="/password/forget" element={<ForgotPassword />} />
+        <Route exact path="/password/reset/:token" element={<ResetPassword />} />
+
       </Routes>
 
       <Footer />
