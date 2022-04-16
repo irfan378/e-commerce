@@ -15,13 +15,11 @@ const UpdatePassword = () => {
     const dispatch = useDispatch();
     const alert = useAlert();
     const navigate = useNavigate();
-    const { user } = useSelector((state) => state.user)
     const { error, isUpdated, loading } = useSelector((state) => state.profile)
     const [oldPassword, setOldPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
-    const [avatarPreview, setAvatarPreview] = useState("/profile.jpg")
     const updatePasswordSubmit = (e) => {
         e.preventDefault();
         const myForm = new FormData();
@@ -54,8 +52,8 @@ const UpdatePassword = () => {
                 <MetaData title="Change Password" />
                 <div className="updatePasswordContainer">
                     <div className="updatePasswordBox">
-                        <h2 className='updatePasswordHeading'>Update Profile</h2>
-                        <form className='updatePasswordForm' encType="multipart/form-data" onSubmit={updatePasswordSubmit}>
+                        <h2 className='updatePasswordHeading'>Change Password</h2>
+                        <form className='updatePasswordForm' onSubmit={updatePasswordSubmit}>
                             <div className="signUpPassword">
                                 <VpnKeyIcon />
                                 <input type="password" placeholder='Old Password' required name='password' value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} />

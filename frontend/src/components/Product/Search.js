@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import "./Search.css"
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import MetaData from "../layout/MetaData"
 const Search = () => {
     const [keyword, setKeyword] = useState("");
