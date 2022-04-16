@@ -1,11 +1,10 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import "./ResetPassword.css"
 import Loader from "../layout/Loader/Loader"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { clearErrors, updatePassword } from '../../actions/userAction'
+import { clearErrors, resetPassword } from '../../actions/userAction'
 import { useAlert } from "react-alert"
-import { UPDATE_PASSWORD_RESET } from '../../constants/userConstant'
 import MetaData from '../layout/MetaData'
 import LockOpen from '@material-ui/icons/LockOpen'
 import LockIcon from '@material-ui/icons/Lock'
@@ -13,56 +12,50 @@ import LockIcon from '@material-ui/icons/Lock'
 
 const ResetPassword = () => {
     const dispatch = useDispatch();
+    const params = useParams();
     const alert = useAlert();
     const navigate = useNavigate();
-    const { error, isUpdated, loading } = useSelector((state) => state.profile)
-    const [Password, setPassword] = useState("")
+    const { error, success, loading } = useSelector((state) => state.forgotPassword)
+    const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
-    const updatePasswordSubmit = (e) => {
+    const resetPasswordSubmit = (e) => {
         e.preventDefault();
         const myForm = new FormData();
-
-
-        myForm.set("newPassword", Password)
+        myForm.set("password", password)
         myForm.set("confirmPassword", confirmPassword)
-        dispatch(updatePassword(myForm))
+        dispatch(resetPassword(params.token, myForm))
     }
-
-
     useEffect(() => {
 
         if (error) {
             alert.error(error);
             dispatch(clearErrors())
         }
-        if (isUpdated) {
-            alert.success("Profile updated Sucessfully")
+        if (success) {
+            alert.success("Password updated Sucessfully")
+            navigate("/login")
 
-            navigate("/account")
-            dispatch({
-                type: UPDATE_PASSWORD_RESET
-            })
         }
-    }, [dispatch, error, alert, isUpdated, navigate])
+    }, [dispatch, error, alert, success, navigate])
     return (
         <Fragment>
             {loading ? <Loader /> : (<Fragment>
                 <MetaData title="Change Password" />
-                <div className="updatePasswordContainer">
-                    <div className="updatePasswordBox">
-                        <h2 className='updatePasswordHeading'>Change Password</h2>
-                        <form className='updatePasswordForm' onSubmit={updatePasswordSubmit}>
-                            <div className="signUpPassword">
+                <div className="resetPasswordContainer">
+                    <div className="resetPasswordBox">
+                        <h2 className='resetPasswordHeading'>Change Password</h2>
+                        <form className='resetPasswordForm' onSubmit={resetPasswordSubmit}>
+                            <div>
 
                                 <LockOpen />
-                                <input type="password" placeholder='New Password' required name='password' value={Password} onChange={(e) => setPassword(e.target.value)} />
+                                <input type="password" placeholder='New Password' required name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                             </div>
-                            <div className="signUpPassword">
+                            <div >
                                 <LockIcon />
                                 <input type="password" placeholder='Confirm Password' required name='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
                             </div>
-                            <input type="submit" value="Change" className="updatePasswordBtn" />
+                            <input type="submit" value="Update" className="resetPasswordBtn" />
                         </form>
 
                     </div>
