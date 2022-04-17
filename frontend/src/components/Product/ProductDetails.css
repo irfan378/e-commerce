@@ -161,6 +161,9 @@
   text-align: center;
   color: black;
 }
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 @media screen and (max-width: 600px) {
   .ProductDetails {
     flex-direction: column;
