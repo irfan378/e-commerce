@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import { CarouselProvider } from 'pure-react-carousel';
 import "./ProductDetails.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { clearErrors, getProductDetails } from '../../actions/productAction';
@@ -8,8 +8,11 @@ import ReactStars from "react-rating-stars-component"
 import ReviewCard from "./ReviewCard"
 import Loader from "../layout/Loader/Loader"
 import MetaData from "../layout/MetaData"
-const ProductDetails = () => {
+import { addItemsToCart } from "../../actions/cartAction"
+import { useAlert } from "react-alert"
 
+const ProductDetails = () => {
+    const alert = useAlert()
     const params = useParams();
     const dispatch = useDispatch();
     const { product, loading, error } = useSelector((state) => state.productDetails);
@@ -39,6 +42,10 @@ const ProductDetails = () => {
         const qty = quantity - 1;
         setQuantity(qty);
     }
+    const addToCartHandler = () => {
+        dispatch(addItemsToCart(params.id, quantity))
+        alert.success("Item Added To Cart")
+    }
     return (
         <Fragment>
             {loading ? (<Loader></Loader>) : <Fragment>
@@ -52,8 +59,6 @@ const ProductDetails = () => {
                                 <img className='CarouselImage' key={item.url} src={item.url} alt={`${i} Slide`} />
 
                             ))}
-
-
                         </CarouselProvider>
                     </div>
                     <div>
@@ -73,7 +78,7 @@ const ProductDetails = () => {
                                     <input readOnly type="number" value={quantity} />
                                     <button onClick={increaseQuantity}>+</button>
                                 </div>{" "}
-                                <button>Add to cart</button>
+                                <button onClick={addToCartHandler}>Add to cart</button>
                             </div>
                             <p>Status:{""}
                                 <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
