@@ -1,0 +1,21 @@
+.cartPage {
+  padding: 5vmax;
+}
+.cartHeader {
+  background-color: rgb(145, 66, 52);
+  width: 90%;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin: auto;
+  color: white;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  font: 300 0.7vmax "Roboto";
+}
+.cartHeader > p {
+  margin: 10px;
+}
+.cartHeader > p:last-child {
+  text-align: center;
+}
