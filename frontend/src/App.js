@@ -20,6 +20,7 @@ import UpdatePassword from "./components/User/UpdatePassword.js"
 import ForgotPassword from "./components/User/ForgotPassword.js"
 import ResetPassword from "./components/User/ResetPassword.js"
 import Cart from "./components/Cart/Cart.js"
+import Shipping from "./components/Cart/Shipping.js"
 function App() {
   const { isAuthenticated, user } = useSelector(state => state.user)
   React.useEffect(() => {
@@ -55,7 +56,9 @@ function App() {
         <Route exact path="/password/forget" element={<ForgotPassword />} />
         <Route exact path="/password/reset/:token" element={<ResetPassword />} />
         <Route exact path="/cart" element={<Cart />} />
-
+        <Route exact path="/shipping" element={<ProtectedRoute />} >
+          <Route exact path="/shipping" element={<Shipping />} />
+        </Route >
       </Routes>
 
       <Footer />
