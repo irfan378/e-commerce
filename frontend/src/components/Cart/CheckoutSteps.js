@@ -3,6 +3,7 @@ import React, { Fragment } from 'react'
 import LocalShippingIcon from "@material-ui/icons/LocalShipping"
 import LibraryAddCheckIcon from "@material-ui/icons/LibraryAddCheck"
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance"
+import "./CheckoutSteps.css"
 
 
 const CheckoutSteps = ({ activeStep }) => {
@@ -25,7 +26,9 @@ const CheckoutSteps = ({ activeStep }) => {
             <Stepper alternativeLabel activeStep={activeStep} style={stepStyles}>
                 {steps.map((item, index) => (
                     <Step key={index}>
-                        <StepLabel icon={item.icon}>{item.label}</StepLabel>
+                        <StepLabel style={{
+                            color: activeStep >= index ? "tomato" : "rgba(0,0,0,0.659)"
+                        }} icon={item.icon}>{item.label}</StepLabel>
                     </Step>
                 ))}
             </Stepper>

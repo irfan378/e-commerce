@@ -12,7 +12,10 @@ import TransferWithinAStationIcon from "@material-ui/icons/TransferWithinAStatio
 import { Country, State } from "country-state-city"
 import { useAlert } from 'react-alert'
 import CheckoutSteps from "../Cart/CheckoutSteps.js"
+import { useNavigate } from "react-router-dom"
+import { saveShippingInfo } from "../../actions/cartAction"
 const Shipping = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch()
     const alert = useAlert();
     const { shippingInfo } = useSelector((state) => state.cart)
@@ -22,8 +25,16 @@ const Shipping = () => {
     const [country, setCountry] = useState(shippingInfo.country);
     const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
     const [phoneInfo, setPhoneInfo] = useState(shippingInfo.phoneInfo)
-    const shippingSubmit = () => {
-
+    const shippingSubmit = (e) => {
+        e.preventDefault();
+        if (phoneInfo < 10 || phoneInfo.length > 10) {
+            alert.error("Phone Number should be 10 digit")
+            return;
+        }
+        dispatch(
+            saveShippingInfo({ address, city, state, country, pinCode, phoneInfo })
+        );
+        navigate("/order/confirm")
     }
     return <Fragment>
         <MetaData title="Shipping Details" />
