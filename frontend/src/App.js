@@ -74,11 +74,17 @@ function App() {
           <Route exact path="/order/confirm" element={<ConfirmOrder />} />
         </Route >
         {stripeApiKey && (
+<<<<<<< HEAD
 
           <Route exact path="/process/payment" element={<ProtectedRoute />} >
             <Route exact path="/process/payment" element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /> </Elements>} />
           </Route >
 
+=======
+          <Route exact path="/process/payment" element={<ProtectedRoute />} >
+            <Route exact path="/process/payment" element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /> </Elements>} />
+          </Route >
+>>>>>>> main
         )}
       </Routes>
 
