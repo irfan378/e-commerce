@@ -74,11 +74,9 @@ function App() {
           <Route exact path="/order/confirm" element={<ConfirmOrder />} />
         </Route >
         {stripeApiKey && (
-
           <Route exact path="/process/payment" element={<ProtectedRoute />} >
             <Route exact path="/process/payment" element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /> </Elements>} />
           </Route >
-
         )}
       </Routes>
 
