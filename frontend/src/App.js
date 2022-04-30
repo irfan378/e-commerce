@@ -26,6 +26,7 @@ import axios from 'axios';
 import Payment from "./components/Cart/Payment.js"
 import { Elements } from "@stripe/react-stripe-js"
 import { loadStripe } from "@stripe/stripe-js"
+import OrderSuccess from "./components/Cart/OrderSucess.js"
 function App() {
   const { isAuthenticated, user } = useSelector(state => state.user)
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -74,18 +75,13 @@ function App() {
           <Route exact path="/order/confirm" element={<ConfirmOrder />} />
         </Route >
         {stripeApiKey && (
-<<<<<<< HEAD
-
           <Route exact path="/process/payment" element={<ProtectedRoute />} >
             <Route exact path="/process/payment" element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /> </Elements>} />
           </Route >
-
-=======
-          <Route exact path="/process/payment" element={<ProtectedRoute />} >
-            <Route exact path="/process/payment" element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /> </Elements>} />
-          </Route >
->>>>>>> main
         )}
+        <Route exact path="/success" element={<ProtectedRoute />} >
+          <Route exact path="/success" element={<OrderSuccess />} />
+        </Route >
       </Routes>
 
 
