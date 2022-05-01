@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const OrderSucess = () => {
     return (
-        <div className="orderSucsess">
+        <div className="orderSucess">
             <CheckCircleIcon />
             <Typography>Your Order has been Placed Sucessfully</Typography>
             <Link to="/order/me">View Orders</Link>

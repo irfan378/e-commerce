@@ -36,7 +36,7 @@ const ConfirmOrder = () => {
                         </div>
                         <div>
                             <p>Phone:</p>
-                            <span>{shippingInfo.phoneInfo}</span>
+                            <span>{shippingInfo.PhoneNo}</span>
                         </div>
                         <div>
                             <p>Address:</p>
