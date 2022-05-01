@@ -4,7 +4,7 @@ import axios from "axios";
 // Create Order
 export const createOrder = (order) => async (dispatch, getState) => {
     try {
-        dispatch({ CREATE_ORDER_REQUEST });
+        dispatch({ type: CREATE_ORDER_REQUEST });
 
         const config = {
             headers: {
