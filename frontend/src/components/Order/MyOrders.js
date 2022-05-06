@@ -15,13 +15,44 @@ const MyOrders = () => {
     const alert = useAlert();
     const { loading, error, orders } = useSelector((state) => state.myOrders);
     const { user } = useSelector((state) => state.user)
-    const columns = [];
+    const columns = [
+        { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+        {
+            field: "status",
+            headerName: "Status",
+            minWidth: 150,
+            flex: 0.5
+        },
+        {
+            field: "itemsQty",
+            headerName: "Items Qty",
+            minWidth: 150,
+            flex: 0.3
+        },
+        {
+            field: "amount",
+            headerName: "Amount",
+            minWidth: 270,
+            flex: 0.5
+        },
+    ];
     const rows = [];
+
+
     useEffect(() => {
         if (error) {
             alert.error(error);
-            dispatch(myOrders())
+            dispatch(clearErrors())
         }
+        dispatch(myOrders())
+    }, [dispatch, alert, error])
+    orders && orders.forEach((item, index) => {
+        rows.push({
+            itemQty: item.orderItems.length,
+            id: item._id,
+            status: item.orderStatus,
+            amount: item.totalPrice
+        })
     })
     return <Fragment>
         <MetaData title={`${user.name}-Orders`} />
