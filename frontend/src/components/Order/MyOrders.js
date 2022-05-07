@@ -21,7 +21,10 @@ const MyOrders = () => {
             field: "status",
             headerName: "Status",
             minWidth: 150,
-            flex: 0.5
+            flex: 0.5,
+            cellClassName: (params) => {
+                return params.getValue(params.id, "status") === "Delivered" ? "greenColor" : "redColor";
+            }
         },
         {
             field: "itemsQty",
@@ -35,17 +38,24 @@ const MyOrders = () => {
             minWidth: 270,
             flex: 0.5
         },
+        {
+            field: "actions",
+            flex: 0.3,
+            headerName: "Actions",
+            minWidth: 150,
+            type: "number",
+            sortable: false,
+            renderCell: (params) => {
+                return (
+                    <Link to={`/order/${params.getValue(params.id, "id")}`} >
+                        <LaunchIcon />
+                    </Link>
+
+                );
+            }
+        }
     ];
     const rows = [];
-
-
-    useEffect(() => {
-        if (error) {
-            alert.error(error);
-            dispatch(clearErrors())
-        }
-        dispatch(myOrders())
-    }, [dispatch, alert, error])
     orders && orders.forEach((item, index) => {
         rows.push({
             itemQty: item.orderItems.length,
@@ -54,6 +64,15 @@ const MyOrders = () => {
             amount: item.totalPrice
         })
     })
+
+    useEffect(() => {
+        if (error) {
+            alert.error(error);
+            dispatch(clearErrors())
+        }
+        dispatch(myOrders())
+    }, [dispatch, alert, error])
+
     return <Fragment>
         <MetaData title={`${user.name}-Orders`} />
         {loading ? (
