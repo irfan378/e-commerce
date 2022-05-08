@@ -1,0 +1,32 @@
+.orderDetailsPage {
+  background-color: white;
+}
+.orderDetailsContainer > h1 {
+  font: 300 3vmax "Roboto";
+  margin: 4vmax 0;
+  color: tomato;
+}
+.orderDetailsContainer {
+  padding: 5vmax;
+  padding-bottom: 0%;
+}
+.orderDetailsContainer > p {
+  font: 400 1.8vmax "Roboto";
+}
+.orderDetailsContainerBox,
+.orderDetailsCartItemsContainer {
+  margin: 2vmax;
+}
+.orderDetailsContainerBox > div {
+  display: flex;
+  margin: 1vmax 0;
+}
+.orderDetailsContainerBox > div > p {
+  font: 400 1vmax "Roboto";
+  color: black;
+}
+.orderDetailsContainerBox > div > span {
+  margin: 1vmax 1vmax;
+  font: 100 1vmax "Roboto";
+  color: #575757;
+}
