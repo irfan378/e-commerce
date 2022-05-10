@@ -121,6 +121,17 @@
   background-color: rgb(80, 22, 12);
   transition: scale(1.1);
 }
+.submitDialog {
+  display: flex;
+  flex-direction: column;
+}
+.submitDialogTextArea {
+  border: 1px solid black;
+  margin: 1vmax 0;
+  outline: none;
+  padding: 1rem;
+  font: 300 1rem "Roboto";
+}
 .reviews {
   display: flex;
   overflow: auto;
