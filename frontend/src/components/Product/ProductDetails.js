@@ -66,8 +66,8 @@ const ProductDetails = () => {
         myForm.set("rating", rating)
         myForm.set("comment", comment)
         myForm.set("productId", params.id)
-        dispatch(newReview(myForm))
-        setOpen(false)
+        dispatch(newReview(myForm));
+        setOpen(false);
     }
     return (
         <Fragment>
@@ -91,7 +91,7 @@ const ProductDetails = () => {
                         </div>
                         <div className="detailsBlock-2">
                             <Rating {...options} />
-                            <span>({product.noOfReviews}Reviews)</span>
+                            <span className='detailsBlock-2-span '>({product.noOfReviews}Reviews)</span>
                         </div>
                         <div className="detailsBlock-3">
                             <h1>{`$${product.price}`}</h1>

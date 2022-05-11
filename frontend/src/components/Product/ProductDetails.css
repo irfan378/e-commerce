@@ -39,9 +39,9 @@
   width: 70%;
   padding: 1vmax 0;
 }
-.detailsBlock-2 > span {
+.detailsBlock-2-span {
+  font: 200 1.4vmax cursive;
   color: black;
-  font: 200 0.6vmax cursive;
 }
 .detailsBlock-3 {
   width: 70%;
@@ -163,7 +163,7 @@
   color: black;
   font: 600 0.9vmax "Roboto";
 }
-.reviewCard > span {
+.reviewCardComment {
   color: black;
   font: 300 0.8vmax cursive;
 }
