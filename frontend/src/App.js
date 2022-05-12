@@ -29,6 +29,7 @@ import { loadStripe } from "@stripe/stripe-js"
 import OrderSuccess from "./components/Cart/OrderSucess.js"
 import MyOrders from "./components/Order/MyOrders.js"
 import OrderDetails from "./components/Order/OrderDetails.js"
+import Dashboard from "./components/admin/Dashboard.js"
 function App() {
   const { isAuthenticated, user } = useSelector(state => state.user)
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -90,6 +91,10 @@ function App() {
         <Route exact path="/order/:id" element={<ProtectedRoute />} >
           <Route exact path="/order/:id" element={<OrderDetails />} />
         </Route >
+        <Route exact path="/admin/dashboard" element={<ProtectedRoute />} >
+          <Route exact path="/admin/dashboard" element={<Dashboard />} />
+        </Route >
+
       </Routes>
 
 
