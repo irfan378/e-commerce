@@ -7,6 +7,7 @@ import { Doughnut, Line } from "react-chartjs-2"
 import Chart from 'chart.js/auto';
 
 const Dashboard = () => {
+    Chart.register();
     const lineState = {
         labels: ["Intial Amount", "Amount Earned"],
         datasets: [
@@ -28,7 +29,9 @@ const Dashboard = () => {
             }
 
         ]
+
     }
+
 
     return (
         <div className='dashboard'>
@@ -61,6 +64,7 @@ const Dashboard = () => {
                 <div className="doughnutChart">
                     <Doughnut data={doughnutState} />
                 </div>
+
             </div>
         </div>
     )
