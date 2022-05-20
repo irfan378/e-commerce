@@ -93,7 +93,7 @@ const NewProduct = () => {
         <div className="dashboard">
             <Sidebar />
             <div className="newProductContainer">
-                <form className="createProductFrom" encType="multipart/form-data" onSubmit={createProductSubmitHandler}>
+                <form className="createProductForm" encType="multipart/form-data" onSubmit={createProductSubmitHandler}>
                     <h1>Create Product</h1>
                     <div>
                         <SpellCheckIcon />
@@ -130,7 +130,7 @@ const NewProduct = () => {
                             <img src={image} key={index} alt="Avatar Preview" />
                         ))}
                     </div>
-                    <Button id='createProductBtn' type='submit' disabled={loading ? true : false}>Create</Button>
+                    <Button id='createProductBtn' type='submit'>Create</Button>
                 </form>
             </div>
         </div>
