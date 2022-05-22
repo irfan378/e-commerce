@@ -156,9 +156,9 @@ export const productReducer = (state = { products: {} }, action) => {
             };
         case DELETE_PRODUCT_SUCCESS:
             return {
+                ...state,
                 loading: false,
-                success: action.payload.success,
-                product: action.payload.product
+                isDeleted: action.payload
 
             };
         case DELETE_PRODUCT_FAIL:
@@ -170,7 +170,7 @@ export const productReducer = (state = { products: {} }, action) => {
         case DELETE_PRODUCT_RESET:
             return {
                 ...state,
-                success: false
+                isDeleted: false
             }
         case CLEAR_ERRORS:
             return {
