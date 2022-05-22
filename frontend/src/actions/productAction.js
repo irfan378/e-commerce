@@ -1,4 +1,4 @@
-import { ALL_PRODUCT_FAIL, ALL_PRODUCT_REQUEST, ALL_PRODUCT_SUCCESS, CLEAR_ERRORS, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_FAIL, NEW_REVIEW_REQUEST, NEW_REVIEW_SUCCESS, NEW_REVIEW_FAIL, ADMIN_PRODUCT_REQUEST, ADMIN_PRODUCT_SUCCESS, ADMIN_PRODUCT_FAIL, NEW_PRODUCT_REQUEST, NEW_PRODUCT_SUCCESS, NEW_PRODUCT_FAIL } from "../constants/productConstants";
+import { ALL_PRODUCT_FAIL, ALL_PRODUCT_REQUEST, ALL_PRODUCT_SUCCESS, CLEAR_ERRORS, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_FAIL, NEW_REVIEW_REQUEST, NEW_REVIEW_SUCCESS, NEW_REVIEW_FAIL, ADMIN_PRODUCT_REQUEST, ADMIN_PRODUCT_SUCCESS, ADMIN_PRODUCT_FAIL, NEW_PRODUCT_REQUEST, NEW_PRODUCT_SUCCESS, NEW_PRODUCT_FAIL, DELETE_PRODUCT_REQUEST, DELETE_PRODUCT_SUCCESS, DELETE_PRODUCT_FAIL } from "../constants/productConstants";
 import axios from "axios";
 
 export const getProducts = (keyword = "", currentPage = 1, price = [0, 250000], category, ratings = 0) => async (dispatch) => {
@@ -107,6 +107,29 @@ export const createProduct = (productData) => async (dispatch) => {
         })
     }
 }
+
+
+//Delete Product
+export const deleteProduct = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: DELETE_PRODUCT_REQUEST });
+
+        const { data } = await axios.delete(`/api/v1/admin/products/${id}`)
+
+
+        dispatch({
+            type: DELETE_PRODUCT_SUCCESS,
+            payload: data.success
+        })
+
+    } catch (error) {
+        dispatch({
+            type: DELETE_PRODUCT_FAIL,
+            payload: error.response.data.message,
+        })
+    }
+}
+
 // Clearing errors
 export const clearErrors = () => async (dispatch) => {
     dispatch({

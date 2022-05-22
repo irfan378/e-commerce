@@ -20,7 +20,7 @@ const NewProduct = () => {
     const alert = useAlert();
     const navigate = useNavigate()
 
-    const { loading, error, success } = useSelector((state) => state.newProduct);
+    const { error, success } = useSelector((state) => state.newProduct);
 
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);

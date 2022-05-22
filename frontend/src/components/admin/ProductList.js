@@ -2,26 +2,42 @@ import React, { Fragment, useEffect } from 'react'
 import { DataGrid } from '@material-ui/data-grid'
 import "./productList.css"
 import { useSelector, useDispatch } from 'react-redux'
-import { clearErrors, getAdminProducts } from '../../actions/productAction'
-import { Link } from 'react-router-dom'
+import { clearErrors, getAdminProducts, deleteProduct } from '../../actions/productAction'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAlert } from 'react-alert'
 import { Button } from '@material-ui/core'
+import { DELETE_PRODUCT_RESET } from "../../constants/productConstants"
 import MetaData from '../layout/MetaData'
 import EditIcon from "@material-ui/icons/Edit"
 import DeleteIcon from "@material-ui/icons/Delete"
 import Sidebar from './Sidebar'
 const ProductList = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const alert = useAlert();
-    const { error, products } = useSelector((state) => state.products)
+    const { error, products } = useSelector((state) => state.products);
+    const { error: deleteError, isDeleted } = useSelector((state) => state.products);
+
+    const deleteProductHandler = (id) => {
+        dispatch(deleteProduct(id));
+    }
 
     useEffect(() => {
         if (error) {
             alert.error(error);
-            dispatch(clearErrors())
+            dispatch(clearErrors());
+        }
+        if (deleteError) {
+            alert.error(deleteError);
+            dispatch(clearErrors());
+        }
+        if (isDeleted) {
+            alert.success("Product Deleted Successfully");
+            navigate("/admin/dashboard");
+            dispatch({ type: DELETE_PRODUCT_RESET });
         }
         dispatch(getAdminProducts())
-    }, [dispatch, alert, error])
+    }, [dispatch, alert, error, deleteError, isDeleted, navigate])
 
     const columns = [
         { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
@@ -58,7 +74,7 @@ const ProductList = () => {
                         <Link to={`admin/product/${params.getValue(params.id, "id")}`}>
                             <EditIcon />
                         </Link>
-                        <Button>
+                        <Button onClick={() => deleteProductHandler(params.getValue(params.id, "id"))}>
                             <DeleteIcon />
                         </Button>
                     </Fragment>
