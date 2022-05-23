@@ -71,7 +71,7 @@ const ProductList = () => {
             renderCell: (params) => {
                 return (
                     <Fragment>
-                        <Link to={`admin/product/${params.getValue(params.id, "id")}`}>
+                        <Link to={`/admin/product/${params.getValue(params.id, "id")}`}>
                             <EditIcon />
                         </Link>
                         <Button onClick={() => deleteProductHandler(params.getValue(params.id, "id"))}>
