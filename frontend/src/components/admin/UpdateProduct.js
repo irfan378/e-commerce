@@ -21,7 +21,7 @@ const UpdateProduct = ({ id }) => {
     const navigate = useNavigate()
     const params = useParams()
 
-    const { error, product } = useSelector((state) => state.products);
+    const { error, product } = useSelector((state) => state.productDetails);
     const { error: updateError, isUpdated } = useSelector((state) => state.product);
 
     const [name, setName] = useState("");
@@ -47,7 +47,7 @@ const UpdateProduct = ({ id }) => {
 
     useEffect(() => {
         if (product && product._id !== productId) {
-            dispatch(getProductDetails(id));
+            dispatch(getProductDetails(productId));
         } else {
             setName(product.name);
             setDescription(product.description);
@@ -63,12 +63,12 @@ const UpdateProduct = ({ id }) => {
         if (isUpdated) {
             alert.success("Product Updated Sucessfully");
             navigate('/admin/product');
-            dispatch({ UPDATE_PRODUCT_RESET });
+            dispatch({ type: UPDATE_PRODUCT_RESET });
         }
 
     }, [dispatch, alert, error, navigate, isUpdated, productId, product, updateError])
 
-    const createProductSubmitHandler = (e) => {
+    const updateProductSubmitHandler = (e) => {
         e.preventDefault();
 
         const myForm = new FormData();
@@ -84,11 +84,12 @@ const UpdateProduct = ({ id }) => {
         })
         dispatch(updateProduct(productId, myForm))
     }
-    const createProductImagesChange = (e) => {
+    const updateProductImagesChange = (e) => {
         const files = Array.from(e.target.files);
 
         setImages([]);
         setImagesPreview([]);
+        setOldImages([]);
 
         files.forEach((file) => {
             const reader = new FileReader();
@@ -108,7 +109,7 @@ const UpdateProduct = ({ id }) => {
         <div className="dashboard">
             <Sidebar />
             <div className="newProductContainer">
-                <form className="createProductForm" encType="multipart/form-data" onSubmit={createProductSubmitHandler}>
+                <form className="createProductForm" encType="multipart/form-data" onSubmit={updateProductSubmitHandler}>
                     <h1>Create Product</h1>
                     <div>
                         <SpellCheckIcon />
@@ -116,7 +117,7 @@ const UpdateProduct = ({ id }) => {
                     </div>
                     <div>
                         <AttachMoneyIcon />
-                        <input type="number" placeholder='Price' required onChange={(e) => setPrice(e.target.value)} />
+                        <input value={price} type="number" placeholder='Price' required onChange={(e) => setPrice(e.target.value)} />
                     </div>
                     <div>
                         <DescriptionIcon />
@@ -125,7 +126,7 @@ const UpdateProduct = ({ id }) => {
                     <div>
                         <AccountTreeIcon />
                         <select onChange={(e) => setCategory(e.target.value)}>
-                            <option value="">Choose Category</option>
+                            <option value={categories}>Choose Category</option>
                             {categories.map((cate) => (
                                 <option key={cate} value={cate}>
                                     {cate}
@@ -135,14 +136,20 @@ const UpdateProduct = ({ id }) => {
                     </div>
                     <div>
                         <StorageIcon />
-                        <input type="number" placeholder='Stock' required onChange={(e) => setStock(e.target.value)} />
+                        <input type="number" value={Stock} placeholder='Stock' required onChange={(e) => setStock(e.target.value)} />
                     </div>
                     <div id="createProductFormFile">
-                        <input type="file" name='avatar' accept='image/*' onChange={createProductImagesChange} multiple />
+                        <input type="file" name='avatar' accept='image/*' onChange={updateProductImagesChange} multiple />
+                    </div>
+                    <div id="createProductFormImage">
+                        {oldImages && oldImages.map((image, index) => (
+
+                            <img src={image.url} key={index} alt="Old Product Preview" />
+                        ))}
                     </div>
                     <div id="createProductFormImage">
                         {imagesPreview.map((image, index) => (
-                            <img src={image} key={index} alt="Avatar Preview" />
+                            <img src={image} key={index} alt="Product Preview" />
                         ))}
                     </div>
                     <Button id='createProductBtn' type='submit'>Create</Button>
