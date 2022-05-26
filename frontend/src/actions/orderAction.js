@@ -1,5 +1,6 @@
-import { CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, CREATE_ORDER_FAIL, CLEAR_ERRORS, MY_ORDERS_REQUEST, MY_ORDERS_SUCCESS, MY_ORDERS_FAIL, ORDER_DETAILS_REQUEST, ORDER_DETAILS_SUCCESS, ORDER_DETAILS_FAIL } from "../constants/orderConstant";
+import { CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, CREATE_ORDER_FAIL, CLEAR_ERRORS, MY_ORDERS_REQUEST, MY_ORDERS_SUCCESS, MY_ORDERS_FAIL, ORDER_DETAILS_REQUEST, ORDER_DETAILS_SUCCESS, ORDER_DETAILS_FAIL, ALL_ORDER_REQUEST, ALL_ORDER_FAIL } from "../constants/orderConstant";
 import axios from "axios";
+import { ALL_PRODUCT_SUCCESS } from "../constants/productConstants";
 
 // Create Order
 export const createOrder = (order) => async (dispatch) => {
@@ -50,6 +51,22 @@ export const getOrderDetails = (id) => async (dispatch) => {
         })
     }
 }
+
+// Get all orders --Admin
+export const getAllOrders = () => async (dispatch) => {
+    try {
+        dispatch({ type: ALL_ORDER_REQUEST });
+
+        const { data } = await axios.get("/api/v1/admin/orders")
+        dispatch({ type: ALL_PRODUCT_SUCCESS, payload: data.orders })
+    } catch (error) {
+        dispatch({
+            type: ALL_ORDER_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+
 
 // Clearing errors
 export const clearErrors = () => async (dispatch) => {
