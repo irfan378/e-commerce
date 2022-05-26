@@ -33,6 +33,7 @@ import Dashboard from "./components/admin/Dashboard.js"
 import ProductList from "./components/admin/ProductList.js"
 import NewProduct from './components/admin/NewProduct.js';
 import UpdateProduct from './components/admin/UpdateProduct.js'
+import OrderList from './components/admin/OrderList.js'
 function App() {
   const { isAuthenticated, user } = useSelector(state => state.user)
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -105,6 +106,9 @@ function App() {
         </Route >
         <Route exact path="/admin/product/:id" element={<ProtectedRoute />} >
           <Route exact path="/admin/product/:id" element={<UpdateProduct />} />
+        </Route >
+        <Route exact path="/admin/orders" element={<ProtectedRoute />} >
+          <Route exact path="/admin/orders" element={<OrderList />} />
         </Route >
 
       </Routes>
