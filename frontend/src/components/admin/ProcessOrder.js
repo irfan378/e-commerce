@@ -10,6 +10,7 @@ import { useAlert } from 'react-alert'
 import Loader from '../layout/Loader/Loader'
 import {Button} from "@material-ui/core"
 import { UPDATE_ORDER_RESET } from '../../constants/orderConstant'
+import "./processOrder.css"
 const ProcessOrder = () => {
     const { order,error,loading } = useSelector((state) => state.orderDetails)
     const {error:updateError,isUpdated}=useSelector((state)=>state.order)
@@ -18,7 +19,7 @@ const ProcessOrder = () => {
     const dispatch=useDispatch();
     const params=useParams();
     const alert=useAlert();
-    const[status,setStatus]=useState("");
+    const [status,setStatus]=useState("");
    
     const updateOrderSubmitHandler = (e) => {
         e.preventDefault();
@@ -86,7 +87,7 @@ const ProcessOrder = () => {
                             <div className="orderDetailsContainerBox">
                                 <div>
                                     <p className={order.orderStatus && order.orderStatus === "Delivered" ? "greenColor" : "redColor"}>
-                                        {order.orderStatus && order.orderStatus}
+                                        {order.orderStatus}
                                     </p>
                                 </div>
                             </div>
@@ -110,19 +111,23 @@ const ProcessOrder = () => {
                 </div>
                 {/* */}
                 <div>
-                <form className="createProductForm" encType="multipart/form-data" onSubmit={updateOrderSubmitHandler}>
+                <form className="updateOrderForm" encType="multipart/form-data" onSubmit={updateOrderSubmitHandler}>
                     <h1>Process Order</h1>
                     <div>
                         <AccountTreeIcon />
                         <select onChange={(e) => setStatus(e.target.value)}>
                             <option value="">Choose Category</option>
-                            <option value="shipped">Shipped</option>
-                            <option value="delivered">Delivered</option>
+                         {/* {order.orderStatus==='Processing'&&(
+                                <option value="Shipped">Shipped</option>
+                         )} */}
+                            
+                                <option value="Delivered">Delivered</option>
+                            
                           
                            
                         </select>
                     </div>
-                    <Button disabled={loading?true:false||status===""?true:false} id='createProductBtn' type='submit'>Create</Button>
+                    <Button disabled={loading?true:false||status===""?true:false} id='createProductBtn' type='submit'>Process</Button>
 
                 </form>
                 </div>
