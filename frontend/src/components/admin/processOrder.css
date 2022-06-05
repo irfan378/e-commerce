@@ -13,7 +13,7 @@
   }
   
   
-  .updateOrderForm > div > select{
+  .updateOrderForm > div > input{
     padding: 1vmax 4vmax;
     padding-right: 1vmax;
     margin: 2rem 0;

@@ -5,7 +5,7 @@ import { Link,  useParams } from "react-router-dom"
 import { Typography } from '@material-ui/core'
 import AccountTreeIcon from "@material-ui/icons/AccountTree"
 import Sidebar from "./Sidebar"
-import { clearErrors, getOrderDetails, updateOrders } from '../../actions/orderAction'
+import { clearErrors, getOrderDetails, updateOrder } from '../../actions/orderAction'
 import { useAlert } from 'react-alert'
 import Loader from '../layout/Loader/Loader'
 import {Button} from "@material-ui/core"
@@ -14,13 +14,7 @@ import "./processOrder.css"
 const ProcessOrder = () => {
     const { order,error,loading } = useSelector((state) => state.orderDetails)
     const {error:updateError,isUpdated}=useSelector((state)=>state.order)
-   
 
-    const dispatch=useDispatch();
-    const params=useParams();
-    const alert=useAlert();
-    const [status,setStatus]=useState("");
-   
     const updateOrderSubmitHandler = (e) => {
         e.preventDefault();
 
@@ -28,8 +22,15 @@ const ProcessOrder = () => {
 
         myForm.set("status", status);
        
-        dispatch(updateOrders(params.id, myForm))
+        dispatch(updateOrder(params.id, myForm))
     }
+
+    const dispatch=useDispatch();
+    const params=useParams();
+    const alert=useAlert();
+    const [status,setStatus]=useState("");
+   
+  
     useEffect(()=>{
         if (error) {
             alert.error(error);
@@ -40,7 +41,7 @@ const ProcessOrder = () => {
             dispatch(clearErrors());
         }
         if (isUpdated) {
-            alert.success("Process Updated Sucessfully");
+            alert.success("Order Updated Sucessfully");
             dispatch({type:UPDATE_ORDER_RESET})
         }
         dispatch(getOrderDetails(params.id))
@@ -110,22 +111,13 @@ const ProcessOrder = () => {
                     </div>
                 </div>
                 {/* */}
-                <div>
-                <form className="updateOrderForm" encType="multipart/form-data" onSubmit={updateOrderSubmitHandler}>
+                <div style={{display:order.orderStatus==="Delivered"?"none":"block"}}>
+                <form className="updateOrderForm" onSubmit={updateOrderSubmitHandler}>
                     <h1>Process Order</h1>
                     <div>
                         <AccountTreeIcon />
-                        <select onChange={(e) => setStatus(e.target.value)}>
-                            <option value="">Choose Category</option>
-                         {/* {order.orderStatus==='Processing'&&(
-                                <option value="Shipped">Shipped</option>
-                         )} */}
-                            
-                                <option value="Delivered">Delivered</option>
-                            
-                          
-                           
-                        </select>
+                        <input type="text" placeholder='Enter Delivered or Shipped' value={status}  onChange={(e) => setStatus(e.target.value)}/>
+                      
                     </div>
                     <Button disabled={loading?true:false||status===""?true:false} id='createProductBtn' type='submit'>Process</Button>
 
