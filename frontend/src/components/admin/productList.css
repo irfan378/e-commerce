@@ -1,3 +1,9 @@
+.greenColor{
+ color: green !important;
+}
+.redColor{
+  color: red !important;
+}
 .productListContainer {
   width: 100%;
   box-sizing: border-box;
