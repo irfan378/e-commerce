@@ -37,6 +37,7 @@ import OrderList from './components/admin/OrderList.js'
 import ProcessOrder from './components/admin/ProcessOrder.js'
 import UserList from './components/admin/UserList.js'
 import UpdateUser from './components/admin/UpdateUser.js'
+import ProductReviews from './components/admin/ProductReviews.js'
 function App() {
   const { isAuthenticated, user } = useSelector(state => state.user)
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -121,6 +122,9 @@ function App() {
         </Route >
         <Route exact path="/admin/user/:id" element={<ProtectedRoute />} >
           <Route exact path="/admin/user/:id" element={<UpdateUser />} />
+        </Route >
+        <Route exact path="/admin/reviews" element={<ProtectedRoute />} >
+          <Route exact path="/admin/reviews" element={<ProductReviews />} />
         </Route >
 
       </Routes>
