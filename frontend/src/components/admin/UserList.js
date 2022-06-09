@@ -70,7 +70,7 @@ const UserList = () => {
             headerName: "Actions",
             minWidth: 150,
             type: "number",
-            sorrtable: false,
+            sortable: false,
             renderCell: (params) => {
                 return (
                     <Fragment>

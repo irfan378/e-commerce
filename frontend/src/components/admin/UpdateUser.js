@@ -25,7 +25,7 @@ const UpdateUser = () => {
   const params = useParams();
 
   const { loading, error, user } = useSelector((state) => state.userDetails);
-  const { error: updateError, loading: updateLoading, isUpdated } = useSelector(
+  const { error: updateError, loading: updateLoading, isUpdated,message } = useSelector(
     (state) => state.profile
   );
 
@@ -50,11 +50,11 @@ const UpdateUser = () => {
       dispatch(clearErrors());
     }
     if (isUpdated) {
-      alert.success("User Created Sucessfully");
+      alert.success("User Updated Sucessfully");
       navigate("/admin/users");
       dispatch({ type: UPDATE_USER_RESET });
     }
-  }, [dispatch, alert, error, navigate, updateError, isUpdated]);
+  }, [dispatch, alert, error, navigate, updateError, isUpdated,message]);
 
   const updateUserSubmitHandler = (e) => {
     e.preventDefault();
@@ -65,7 +65,7 @@ const UpdateUser = () => {
     myForm.set("email", email);
     myForm.set("role", role);
 
-    dispatch(updateUser(myForm, userId));
+    dispatch(updateUser(userId,myForm));
   };
 
   return (
