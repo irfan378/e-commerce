@@ -38,6 +38,8 @@ import ProcessOrder from './components/admin/ProcessOrder.js'
 import UserList from './components/admin/UserList.js'
 import UpdateUser from './components/admin/UpdateUser.js'
 import ProductReviews from './components/admin/ProductReviews.js'
+import About from '../src/components/About.js'
+import Contact from './components/Contact.js'
 function App() {
   const { isAuthenticated, user } = useSelector(state => state.user)
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -126,6 +128,8 @@ function App() {
         <Route exact path="/admin/reviews" element={<ProtectedRoute />} >
           <Route exact path="/admin/reviews" element={<ProductReviews />} />
         </Route >
+        <Route exact path='/about' element={<About/>}/>
+        <Route exact path='/contact' element={<Contact/>}/>
 
       </Routes>
 

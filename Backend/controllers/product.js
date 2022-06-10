@@ -208,9 +208,15 @@ exports.deleteReview = catchAsyncError(async (req, res, next) => {
 
     let avg = 0;
     reviews.forEach((rev) => {
-        avg += rev.rating;
+        avg += rev.ratings;
     });
-    ratings = avg / reviews.length;
+    let ratings=0;
+    if (reviews.length===0) {
+        ratings=0;
+    }else{
+        ratings=avg/reviews.length;
+    }
+    
 
     const noOfReviews = reviews.length;
 
