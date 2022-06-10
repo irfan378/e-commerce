@@ -27,7 +27,9 @@ const ProductReviews = () => {
   );
 
   const [productId, setProductId] = useState("");
-  const deleteProductHandler = (id) => {};
+  const deleteReviewHandler = (reviewId) => {
+    dispatch(deleteReviews(reviewId,productId))
+  };
   const productReviewSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(getAllReviews(productId));
@@ -74,7 +76,7 @@ const ProductReviews = () => {
       minWidth: 180,
       flex: 0.4,
       cellClassName: (params) => {
-        return params.getValue(params.id, "role") >= 3
+        return params.getValue(params.id, "rating") >= 3
           ? "greenColor"
           : "redColor";
       },
@@ -91,7 +93,7 @@ const ProductReviews = () => {
           <Fragment>
             <Button
               onClick={() =>
-                deleteProductHandler(params.getValue(params.id, "id"))
+                deleteReviewHandler(params.getValue(params.id, "id"))
               }
             >
               <DeleteIcon />
@@ -116,17 +118,17 @@ const ProductReviews = () => {
       <MetaData title={"ALL REVIEWS - Admin"} />
       <div className="dashboard">
         <Sidebar />
-        <div className="productListContainer">
+        <div className="productReviewContainer">
           <form
-            className="createProductForm"
+            className="productReviewForm"
             onSubmit={productReviewSubmitHandler}
           >
-            <h1>ALL Reviews</h1>
+            <h1 className="productReviewFormHeading">ALL Reviews</h1>
             <div>
               <Star />
               <input
                 type="text"
-                placeholder="Name"
+                placeholder="Product Id"
                 required
                 value={productId}
                 onChange={(e) => setProductId(e.target.value)}
@@ -139,7 +141,7 @@ const ProductReviews = () => {
               id="createProductBtn"
               type="submit"
             >
-              Update
+            Search
             </Button>
           </form>
 

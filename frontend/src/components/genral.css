@@ -1,0 +1,23 @@
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.contact a{
+    text-decoration: none;
+    color: black;
+    padding: 1vmax 1vmax;
+}
+.contact a>svg{
+    height: 100px;
+    width: 100px;
+}
